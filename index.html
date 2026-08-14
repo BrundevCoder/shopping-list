@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Here you can organize your shopping list for everyone in your house! The most simple, practical and best way to do it!">
+    <link rel="stylesheet" href="style.css">
+    <title>Shopping List</title>
+</head>
+<body>
+
+    <main>
+        <div class="log-in-container" id="logInContainer">
+
+            <div class="inputs-container">
+
+                <div class="input-group">
+                    <label for="house-name">House Name:</label>
+                    <input type="text" id="house-name" placeholder="houseName123">
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="house-password" placeholder="UltraSecretPassword">
+                </div>
+
+                <button class="log-in-btn" id="log-in-Button">Create / log-in</button>
+            </div>
+
+        </div>
+
+        <div class="list-container hidden" id="listContainer">
+            
+            <div class="addItem-container">
+                <label for="newItemName">New Item:</label>
+                <input type="text" id="newItemName">
+                <button id="addButton">Add</button>
+            </div>
+
+            <ul class="list" id="items-list">
+                <!--  -->
+            </ul>
+
+        </div>
+
+    </main>
+
+    <script src="script.js" type="module"></script>
+</body>
+</html>

@@ -119,7 +119,7 @@ body {
     padding: .55rem;
     border-radius: 99px;
     border: none;
-    background: #c57c7c;
+    background: #a45b5b;
     color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.18);
 }
@@ -162,10 +162,27 @@ body {
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 }
 
+.splash-anim {
+    padding: 1.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background: #fff;
+    inset: 0;
+    animation: splash 2s ease forwards;
+}
+
 @media (max-width: 610px) {
     .list {
         padding: 1rem;
         display: grid;
         grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@keyframes splash {
+    to {
+        opacity: 0;
     }
 }

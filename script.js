@@ -103,3 +103,10 @@ addButton.addEventListener("click", () => {
 
     newItemInput.value = "";
 })
+
+setTimeout(() => {
+    const screen = document.getElementById("splash");
+
+    screen.style.display = "none";
+
+}, 2750);

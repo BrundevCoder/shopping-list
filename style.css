@@ -52,6 +52,11 @@ body {
     color: #fff;
 }
 
+.input-group input:disabled {
+    cursor: not-allowed;
+    opacity: .5;
+}
+
 .input-group input:focus {
     border: 1px solid #fff;
 }
@@ -68,6 +73,10 @@ body {
     border: 2px solid #fff;
     border-radius: 8px;
     box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.22);
+}
+
+.log-in-btn:disabled {
+    cursor: not-allowed;
 }
 
 .list-container {

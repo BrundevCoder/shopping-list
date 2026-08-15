@@ -1,6 +1,8 @@
 # Shopping List
 
-**Shopping List** itºs a website that helps you save your shopping list online!
+**Shopping List** it's a website that helps you save your shopping list online!
+
+You can use this [Here](https://brundevcoder.github.io/shopping-list/)
 
 ## How does it work?
 

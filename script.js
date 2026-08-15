@@ -131,7 +131,7 @@ addButton.addEventListener("click", () => {
 
     const time = new Date();
 
-    const day = time.getDay();
+    const day = time.getDate();
     const month = time.getMonth() + 1;
     const year = time.getFullYear();
 

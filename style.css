@@ -116,7 +116,7 @@ body {
 
 .actions button {
     cursor: pointer;
-    padding: .55rem;
+    padding: .55rem .75rem;
     border-radius: 15px;
     border: 1px solid transparent;
     background: none;

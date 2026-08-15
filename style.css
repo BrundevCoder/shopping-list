@@ -117,9 +117,9 @@ body {
 .actions button {
     cursor: pointer;
     padding: .55rem;
-    border-radius: 99px;
-    border: none;
-    background: #a45b5b;
+    border-radius: 15px;
+    border: 1px solid transparent;
+    background: none;
     color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.18);
 }

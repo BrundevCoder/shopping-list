@@ -73,6 +73,7 @@ function dataBaseConnect() {
                 <p>${item.name}</p>
                 <div class="actions">
                     <button class="delete-button" translate="no"><span class="material-symbols-outlined">delete</span></button>
+                    <button class="info-button" translate="no"><span class="material-symbols-outlined">info</span></button>
                     <button class="edit-button" translate="no"><span class="material-symbols-outlined">edit</span></button>
                 </div>
             `;
@@ -105,6 +106,11 @@ function dataBaseConnect() {
                 })
             })
 
+            const infoButton = itemHtml.querySelector(".info-button");
+            infoButton.addEventListener("click", () => {
+                createInfoPanel(item.createdAt);
+            })
+
             itemsList.appendChild(itemHtml);
         })
     })
@@ -123,9 +129,19 @@ addButton.addEventListener("click", () => {
         return;
     }
 
+    const time = new Date();
+
+    const day = time.getDay();
+    const month = time.getMonth() + 1;
+    const year = time.getFullYear();
+
+    const hours = time.getHours();
+    const minutes = time.getMinutes();
+
     const itemRef = ref(dataBase, path);
     push(itemRef, {
-        name: newItemName
+        name: newItemName,
+        createdAt: `${day}/${month}/${year} ${hours}:${minutes}`
     })
 
     newItemInput.value = "";
@@ -139,7 +155,39 @@ addButton.addEventListener("click", () => {
 
 setTimeout(() => {
     const screen = document.getElementById("splash");
-
     screen.style.display = "none";
-
 }, 2750);
+
+function createInfoPanel(createdAt="null date") {
+    const dialog = document.createElement("dialog");
+    document.body.appendChild(dialog);
+    dialog.classList.add("info-panel");
+
+    const title = document.createElement("p");
+    title.classList.add("title")
+    title.innerHTML = `<span class="material-symbols-outlined info-symbol">info</span> Info Panel`;
+    dialog.appendChild(title);
+
+    const unorderList = document.createElement("ul");
+    unorderList.classList.add("info-list");
+
+    unorderList.innerHTML = `
+        <li>
+            <p>Created At: ${createdAt}</p>
+        </li>
+    `;
+
+    const closeButton = document.createElement("button");
+    closeButton.innerHTML = `<span class="material-symbols-outlined">close</span>`;
+    closeButton.classList.add("close-button");
+
+    closeButton.addEventListener("click", () => {
+        dialog.close();
+    })
+
+    dialog.appendChild(closeButton);
+
+    dialog.appendChild(unorderList);
+
+    dialog.showModal();
+}

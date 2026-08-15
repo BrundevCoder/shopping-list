@@ -72,8 +72,8 @@ function dataBaseConnect() {
             itemHtml.innerHTML = `
                 <p>${item.name}</p>
                 <div class="actions">
-                    <button class="delete-button"><span class="material-symbols-outlined">delete</span></button>
-                    <button class="edit-button"><span class="material-symbols-outlined">edit</span></button>
+                    <button class="delete-button" translate="no"><span class="material-symbols-outlined">delete</span></button>
+                    <button class="edit-button" translate="no"><span class="material-symbols-outlined">edit</span></button>
                 </div>
             `;
 

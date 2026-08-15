@@ -72,7 +72,8 @@ function dataBaseConnect() {
             itemHtml.innerHTML = `
                 <p>${item.name}</p>
                 <div class="actions">
-                    <button>Delete</button>
+                    <button><span class="material-symbols-outlined">delete</span></button>
+                    <button disabled><span class="material-symbols-outlined">edit</span></button>
                 </div>
             `;
 
@@ -107,6 +108,12 @@ addButton.addEventListener("click", () => {
     })
 
     newItemInput.value = "";
+
+    addButton.classList.add("send");
+
+    setTimeout(() => {
+        addButton.classList.remove("send");
+    }, 2000);
 })
 
 setTimeout(() => {

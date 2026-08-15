@@ -109,7 +109,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #c7c18b;
+    background: #aaa;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
 }
@@ -122,6 +122,23 @@ body {
     background: #a45b5b;
     color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.18);
+}
+
+.actions button:hover {
+    border: 1px solid #5f40bd;
+    transform: scale(0.95);
+}
+      
+.actions button:active {
+    background: #361b87;
+    transform: scale(0.9);
+}
+      
+.actions button:disabled {
+    cursor: not-allowed;
+    background: #3c3359;
+    color: #8e81b8;
+    transform: scale(0.9);
 }
 
 .hidden {
@@ -162,6 +179,14 @@ body {
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 }
 
+#addButton:hover {
+    transform: scale(0.95);
+}
+      
+#addButton.send span {
+    animation: send 2s forwards;
+}
+
 .splash-anim {
     padding: 1.3rem;
     display: flex;
@@ -184,5 +209,17 @@ body {
 @keyframes splash {
     to {
         opacity: 0;
+    }
+}
+
+@keyframes send {
+    50% {
+        transform: translateX(95px);
+    }
+    90% {
+        transform: translateX(95px);
+    }
+    100% {
+        transform: translateX(0);
     }
 }

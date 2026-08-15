@@ -1,7 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-analytics.js";
 import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app-check.js";
-import {getDatabase, ref, push, onValue, remove} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-database.js";
+import { getDatabase, ref, push, onValue, remove, update } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-database.js";
 
 const logInContainer = document.getElementById("logInContainer");
 const houseNameInput = document.getElementById("house-name");
@@ -72,16 +72,37 @@ function dataBaseConnect() {
             itemHtml.innerHTML = `
                 <p>${item.name}</p>
                 <div class="actions">
-                    <button><span class="material-symbols-outlined">delete</span></button>
-                    <button disabled><span class="material-symbols-outlined">edit</span></button>
+                    <button class="delete-button"><span class="material-symbols-outlined">delete</span></button>
+                    <button class="edit-button"><span class="material-symbols-outlined">edit</span></button>
                 </div>
             `;
 
-            const deleteButton = itemHtml.querySelector(".actions button");
+            const deleteButton = itemHtml.querySelector(".delete-button");
 
             deleteButton.addEventListener("click", () => {
                 const itemRef = ref(dataBase, `${path}/${id}`);
                 remove(itemRef);
+            })
+
+            const editButton = document.querySelector(".edit-button");
+            editButton.addEventListener("click", () => {
+                const currentName = item.name;
+                const editedName = prompt(`Edit the name of ${currentName}`).trim();
+
+                if (editedName === "") {
+                    alert("Can't edit empty items!");
+                    return;
+                }
+
+                if (editedName.length > 25) {
+                    alert("Too large name!");
+                    return;
+                }
+
+                const itemRef = ref(dataBase, `${path}/${id}`);
+                update(itemRef, {
+                    name: editedName
+                })
             })
 
             itemsList.appendChild(itemHtml);

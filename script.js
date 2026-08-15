@@ -141,7 +141,7 @@ addButton.addEventListener("click", () => {
     const itemRef = ref(dataBase, path);
     push(itemRef, {
         name: newItemName,
-        createdAt: `${day}/${month}/${year} ${hours}:${minutes}`
+        createdAt: `${day}/${month}/${year} ${hours}H`
     })
 
     newItemInput.value = "";
@@ -183,6 +183,7 @@ function createInfoPanel(createdAt="null date") {
 
     closeButton.addEventListener("click", () => {
         dialog.close();
+        document.body.remove(dialog);
     })
 
     dialog.appendChild(closeButton);

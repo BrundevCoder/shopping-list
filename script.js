@@ -84,7 +84,7 @@ function dataBaseConnect() {
                 remove(itemRef);
             })
 
-            const editButton = document.querySelector(".edit-button");
+            const editButton = itemHtml.querySelector(".edit-button");
             editButton.addEventListener("click", () => {
                 const currentName = item.name;
                 const editedName = prompt(`Edit the name of ${currentName}`).trim();

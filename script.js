@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-analytics.js";
+import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app-check.js";
 import {getDatabase, ref, push, onValue, remove} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-database.js";
 
 const logInContainer = document.getElementById("logInContainer");
@@ -12,7 +13,6 @@ const itemsList = document.getElementById("items-list");
 
 const newItemInput = document.getElementById("newItemName");
 const addButton = document.getElementById("addButton");
-
 
 const firebaseConfig = {
     apiKey: "AIzaSyA2epBvGh9Xbqc1eBPnXdGZ3ExDeHHRIE4",
@@ -27,6 +27,11 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const dataBase = getDatabase(app);
 const analytics = getAnalytics(app);
+
+const appCheck = initializeAppCheck(app, {
+    provider: new ReCaptchaV3Provider('6LdpoIYtAAAAANbkIB4LIROfXWMxR1MzuUnKldJM'),
+    isTokenAutoRefreshEnabled: true
+})
 
 let path = "";
 

@@ -121,6 +121,7 @@ body {
     border: 1px solid transparent;
     background: none;
     color: #fff;
+    transition: 125ms ease;
 }
 
 .actions button:hover {

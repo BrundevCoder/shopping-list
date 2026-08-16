@@ -96,7 +96,7 @@ body {
     padding-top: 3rem;
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     gap: 30px 5px;
     width: 100%;
     max-width: 600px;
@@ -319,11 +319,91 @@ body {
     animation-fill-mode: forwards;
 }
 
+.grid-viwer-container {
+    width: 100%;
+    max-width: 600px;
+}
+
+.viwer {
+    padding: .45rem;
+    border-radius: 12px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.grid-group {
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: .55rem .85rem;
+    background: #909090;
+    border: 1.5px solid #616161;
+}
+
+.grid-group button {
+    cursor: pointer;
+    border-radius: 8px;
+    padding: .5rem;
+    border: none;
+    background: transparent;
+    transition: 125ms ease;
+}
+
+.grid-group button:not(.button-active):hover {
+    background: #c2c2c294;
+    color: #493a74;
+}
+
+.grid-group button:not(.button-active):active {
+    background: #c2c2c25a;
+    color: #402a7b;
+    transform: scale(0.9);
+}
+
+.button-active {
+    background: #c2c2c26c !important;
+    transform: scale(0.9);
+    color: #794cff; 
+}
+
+.twoColumns {
+    grid-template-columns: repeat(2, 1fr) !important;
+}
+
+
 @media (max-width: 610px) {
     .list {
         padding: 1rem;
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
+    }
+    .twoColumns {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+    .list.twoColumns > .item {
+        flex-direction: column;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        min-height: 120px;
+    }
+    .list.twoColumns > .item > .actions {
+        gap: 3px;
+        margin-top: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    .list.twoColumns > .item > p {
+        width: 100%;
+        text-align: center;
+        margin-bottom: .5rem;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+    .list.twoColumns > .item > .actions button {
+        padding: .35rem .55rem;
     }
 }
 

@@ -14,6 +14,9 @@ const itemsList = document.getElementById("items-list");
 const newItemInput = document.getElementById("newItemName");
 const addButton = document.getElementById("addButton");
 
+const RowButton = document.getElementById("RowButton");
+const columnButton = document.getElementById("columnButton");
+
 const houseRule = /^[a-zA-Z0-9]+$/;
 
 const firebaseConfig = {
@@ -38,6 +41,8 @@ const appCheck = initializeAppCheck(app, {
 let path = "";
 
 let alerting = false;
+
+let gridColumns = 2;
 
 logInButton.addEventListener("click", () => {
     const houseName = houseNameInput.value.trim();
@@ -233,3 +238,59 @@ function createAlert(description="Unknown Error") {
         }, 4000);
     }, 2500);
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const width = window.innerWidth;
+
+    if (width < 335) {
+        columnButton.disabled = true;
+        RowButton.classList.add("button-active");
+        return;
+    }
+
+    if (width <= 610) {
+        RowButton.classList.toggle("button-active");
+        gridColumns = 1;
+    }
+    else {
+        columnButton.classList.toggle("button-active");
+        gridColumns = 2;
+    }
+
+    controllListGrid(gridColumns);
+})
+
+function controllListGrid(collumns=1) {
+    const width = window.innerWidth;
+
+    if (width < 335) {
+        itemsList.classList.remove("twoColumns");
+        columnButton.disabled = true;
+        columnButton.classList.remove("button-active");
+        RowButton.classList.add("button-active");
+        return;
+    }
+
+    if (collumns == 2) {
+        itemsList.classList.add("twoColumns");
+    }
+    else {
+        itemsList.classList.remove("twoColumns");
+    }
+}
+
+RowButton.addEventListener("click", () => {
+    gridColumns = 1;
+    controllListGrid(gridColumns);
+
+    columnButton.classList.remove("button-active");
+    RowButton.classList.add("button-active");
+})
+
+columnButton.addEventListener("click", () => {
+    gridColumns = 2;
+    controllListGrid(gridColumns);
+
+    RowButton.classList.remove("button-active");
+    columnButton.classList.add("button-active");
+})

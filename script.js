@@ -14,6 +14,8 @@ const itemsList = document.getElementById("items-list");
 const newItemInput = document.getElementById("newItemName");
 const addButton = document.getElementById("addButton");
 
+const houseRule = /^[a-zA-Z0-9]+$/;
+
 const firebaseConfig = {
     apiKey: "AIzaSyA2epBvGh9Xbqc1eBPnXdGZ3ExDeHHRIE4",
     authDomain: "shopping-list-0001-93a5e.firebaseapp.com",
@@ -35,12 +37,19 @@ const appCheck = initializeAppCheck(app, {
 
 let path = "";
 
+let alerting = false;
+
 logInButton.addEventListener("click", () => {
     const houseName = houseNameInput.value.trim();
     const password = housePasswordInput.value.trim();
 
     if (houseName === "" || password === "") {
-        alert("House Name or Password are Missing!");
+        createAlert("House name or Password are Missing!");
+        return;
+    }
+
+    if (!RegExp(houseRule).test(houseName) || !RegExp(houseRule).test(password)) {
+        createAlert("You can't use symbols!");
         return;
     }
 
@@ -60,6 +69,7 @@ function dataBaseConnect() {
         itemsList.innerHTML = "";
 
         if (!data) {
+            //createAlert();
             return;
         }
 
@@ -72,9 +82,9 @@ function dataBaseConnect() {
             itemHtml.innerHTML = `
                 <p>${item.name}</p>
                 <div class="actions">
-                    <button class="delete-button" translate="no"><span class="material-symbols-outlined">delete</span></button>
-                    <button class="info-button" translate="no"><span class="material-symbols-outlined">info</span></button>
-                    <button class="edit-button" translate="no"><span class="material-symbols-outlined">edit</span></button>
+                    <button class="delete-button" translate="no" title="delete"><span class="material-symbols-outlined">delete</span></button>
+                    <button class="info-button" translate="no" title="see info"><span class="material-symbols-outlined">info</span></button>
+                    <button class="edit-button" translate="no" title="edit"><span class="material-symbols-outlined">edit</span></button>
                 </div>
             `;
 
@@ -88,7 +98,12 @@ function dataBaseConnect() {
             const editButton = itemHtml.querySelector(".edit-button");
             editButton.addEventListener("click", () => {
                 const currentName = item.name;
-                const editedName = prompt(`Edit the name of ${currentName}`).trim();
+                const editedName = prompt(`Edit the name of ${currentName}`);
+
+                if (editedName === null || editedName === currentName) {
+                    createAlert(`The edition of ${currentName} was automatically cancelled`);
+                    return;
+                }
 
                 if (editedName === "") {
                     alert("Can't edit empty items!");
@@ -120,12 +135,12 @@ addButton.addEventListener("click", () => {
     const newItemName = newItemInput.value.trim();
 
     if (newItemName === "") {
-        alert("Can't add empty items!");
+        createAlert("You can't add empty items!");
         return;
     }
 
     if (newItemName.length > 25) {
-        alert("Too large name!");
+        createAlert("Too large name! Max 25 characters.");
         return;
     }
 
@@ -136,7 +151,6 @@ addButton.addEventListener("click", () => {
     const year = time.getFullYear();
 
     const hours = time.getHours();
-    const minutes = time.getMinutes();
 
     const itemRef = ref(dataBase, path);
     push(itemRef, {
@@ -191,4 +205,29 @@ function createInfoPanel(createdAt="null date") {
     dialog.appendChild(unorderList);
 
     dialog.showModal();
+}
+
+function createAlert(description="Unknown Error") {
+
+    if (alerting) return;
+
+    alerting = true;
+
+    const div = document.createElement("div");
+    div.classList.add("alert-container");
+
+    const para = document.createElement("p");
+    para.innerText = `Alert: ${description}`;
+
+    div.appendChild(para);
+    document.body.appendChild(div);
+
+    setTimeout(() => {
+        div.classList.add("fadeOut");
+        
+        setTimeout(() => {
+            div.remove();
+            alerting = !alerting;
+        }, 4000);
+    }, 2500);
 }

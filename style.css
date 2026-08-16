@@ -114,6 +114,11 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
 }
 
+.item p {
+    flex: 1;
+    word-break: break-word;
+}
+
 .actions button {
     cursor: pointer;
     padding: .55rem .75rem;

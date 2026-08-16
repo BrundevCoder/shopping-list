@@ -146,6 +146,23 @@ body {
     transform: scale(0.9);
 }
 
+.delete-button {
+    border: 1px solid #d47070 !important;
+    background: #d1ababa1 !important;
+    color: #e74f4f !important;
+}
+
+.delete-button:hover {
+    border: 1px solid #ffa9a9 !important;
+    background: #e74f4f !important;
+    color: #ffc8c8 !important;
+}
+
+.info-button {
+    background: #3c3359 !important;
+    color: #c1b5e8 !important;
+}
+
 .edit-button {
     background: #3c3359 !important;
     color: #c1b5e8 !important;
@@ -333,9 +350,8 @@ body {
 
 .grid-group {
     border-radius: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
     padding: .55rem .85rem;
     background: #909090;
@@ -344,11 +360,20 @@ body {
 
 .grid-group button {
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     border-radius: 8px;
     padding: .5rem;
     border: none;
     background: transparent;
+    font-size: 1.25rem;
     transition: 125ms ease;
+}
+
+.grid-group button span {
+    transform: translateY(-1px);
 }
 
 .grid-group button:not(.button-active):hover {
@@ -364,8 +389,7 @@ body {
 
 .button-active {
     background: #c2c2c26c !important;
-    transform: scale(0.9);
-    color: #794cff; 
+    color: #4000ff; 
 }
 
 .twoColumns {
@@ -423,6 +447,12 @@ body {
     .info-panel {
         width: 90%;
         max-width: none;
+    }
+    .grid-group button {
+        font-size: 1rem;
+    }
+    .grid-group button span {
+        font-size: 1.09rem;
     }
 }
 

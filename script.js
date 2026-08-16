@@ -98,12 +98,14 @@ function dataBaseConnect() {
             const editButton = itemHtml.querySelector(".edit-button");
             editButton.addEventListener("click", () => {
                 const currentName = item.name;
-                const editedName = prompt(`Edit the name of ${currentName}`);
+                let editedName = prompt(`Edit the name of ${currentName}`);
 
                 if (editedName === null || editedName === currentName) {
                     createAlert(`The edition of ${currentName} was automatically cancelled`);
                     return;
                 }
+
+                editedName = editedName.trim();
 
                 if (editedName === "") {
                     alert("Can't edit empty items!");

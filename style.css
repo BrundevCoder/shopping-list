@@ -174,6 +174,9 @@ body {
 }
 
 .addItem-container {
+    padding: 1rem;
+    width: 100%;
+    max-width: 350px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -186,6 +189,9 @@ body {
 }
 
 #newItemName {
+    width: 100%;
+    padding: .5rem;
+    margin-top: 1.5rem;
     font-size: 1.25rem;
     outline: none;
     font-family: Arial, sans-serif;
@@ -218,6 +224,7 @@ body {
 }
 
 .splash-anim {
+    pointer-events: none;
     padding: 1.3rem;
     display: flex;
     justify-content: center;
@@ -476,14 +483,16 @@ body {
 }
 
 @keyframes send {
-    50% {
-        transform: translateX(95px);
+    30%, 60% {
+        transform: translateX(200px);
+        opacity: 0;
     }
-    90% {
-        transform: translateX(95px);
+    70% {
+        transform: translateX(0);
+        opacity: 0;
     }
     100% {
-        transform: translateX(0);
+        opacity: 1;
     }
 }
 

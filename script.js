@@ -186,7 +186,7 @@ function createInfoPanel(createdAt="null date") {
 
     const title = document.createElement("p");
     title.classList.add("title")
-    title.innerHTML = `<span class="material-symbols-outlined info-symbol">info</span> Info Panel`;
+    title.innerHTML = `<span class="material-symbols-outlined info-symbol" translate="no">info</span> Info Panel`;
     dialog.appendChild(title);
 
     const unorderList = document.createElement("ul");
@@ -199,7 +199,7 @@ function createInfoPanel(createdAt="null date") {
     `;
 
     const closeButton = document.createElement("button");
-    closeButton.innerHTML = `<span class="material-symbols-outlined">close</span>`;
+    closeButton.innerHTML = `<span class="material-symbols-outlined" translate="no" title="close">close</span>`;
     closeButton.classList.add("close-button");
 
     closeButton.addEventListener("click", () => {

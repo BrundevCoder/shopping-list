@@ -74,7 +74,6 @@ function dataBaseConnect() {
         itemsList.innerHTML = "";
 
         if (!data) {
-            //createAlert();
             return;
         }
 

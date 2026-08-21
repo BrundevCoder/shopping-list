@@ -37,3 +37,6 @@ Once you create items, you will encounter 3 different buttons for each one:
 ## What problems does it solve?
 
 Has it ever happened to you that a relative asked you to take a picture of their shopping list and you were busy? Or maybe you forgot to add something to the list? Using **Shopping List** makes everything much easier!
+
+## How to run it locally?
+Simple! Just clone this repository, and in Vs Code open the index.html file or open it with Live Server extension! But for local use I recommend creating a database in Firebase as well for it actually work and replace the code details with your own!
